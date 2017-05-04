@@ -9,6 +9,7 @@ var bodyParser=require('body-parser')
 db.create()
 app.get('/', function (req, res){
 	res.sendFile(path.join('/home/thameena/environments/myapp/express'+'/login.html'))
+	
 })
 
 app.use(bodyParser.urlencoded({
@@ -35,18 +36,18 @@ app.post('/',function (req,res){
 	}
 	else{
 		if (flag_pass==0){
-			res.sendFile(path.join('/home/thameena/environments/myapp/express'+'/login.html'),msg="Invalid password")
+			res.send("Invalid password")
 		}
 		else{
 			res.send("Successfully logged in")
 		}
 	}
  
-	return res.redirect('/register')
+	return res.redirect('register')
 })
 
 app.get('/register', function(req,res){
- res.sendFile(path.join('/home/thameena/environments/myapp/express'+'/login.html'))
+ res.sendFile(path.join('/home/thameena/environments/myapp/express'+'/register.html'))
 })
 
 app.post('/register', function(req,res){
