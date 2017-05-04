@@ -17,35 +17,31 @@ app.use(bodyParser.urlencoded({
 
 app.post('/',function (req,res){
  var data = db.fetch()
- var flag1 = 0
- var flag2 = 0
+ var flag_name = 0
+ var flag_pass= 0
  var pwd = req.body.pwd;
  var uname = req.body.uname;
  for(var i=0; i<data.length; i+=2){
 	if(data[i]==uname){
-		flag1=1;	
+		flag_name=1;	
 		if(data[i+1]==pwd){
-			flag2=1
+			flag_pass=1
 		}
-		else{
-			flag2=0
-		}
-	}
-	else{
-		flag1=0
-	}
-	if (flag1==0){
+		
+	}}
+	
+	if (flag_name==0){
 		return res.redirect('/register')
 	}
 	else{
-		if (flag2==0){
-			res.sendFile(path.join('/home/thameena/environments/myapp/express'+'/login.html'))
+		if (flag_pass==0){
+			res.sendFile(path.join('/home/thameena/environments/myapp/express'+'/login.html'),msg="Invalid password")
 		}
 		else{
 			res.send("Successfully logged in")
 		}
 	}
- }
+ 
 	return res.redirect('/register')
 })
 
