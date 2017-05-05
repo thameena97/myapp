@@ -8,7 +8,9 @@ var bodyParser=require('body-parser')
 
 db.create()
 app.get('/', function (req, res){
+	
 	res.sendFile(path.join('/home/thameena/environments/myapp/express'+'/login.html'))
+	
 	
 })
 
