@@ -4,7 +4,7 @@ var data=[]
 
 module.exports = {
 	create: function () {
-  db.run('CREATE TABLE IF NOT EXISTS LOGIN (num integer PRIMARY KEY AUTOINCREMENT, username char(20), password char(20))')
+  db.run('CREATE TABLE if not exists LOGIN (num integer PRIMARY KEY AUTOINCREMENT, username char(20), password char(20))')
 },
 
 	insert: function(uname,pwd){
